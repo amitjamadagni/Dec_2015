@@ -1,0 +1,99 @@
+% Chapter 3
+
+\chapter{Quantum Doubles and other examples in String-Net picture} % Main chapter title
+
+\label{Chapter4} % For referencing the chapter elsewhere, use \ref{Chapter3} 
+
+\lhead{Chapter 4. \emph{Quantum Doubles and other examples in String-Net picture }} % This is for the header on each page - perhaps a shortened title
+
+%----------------------------------------------------------------------------------------
+
+\section{Toric Code, Quantum Double of $S_{3}$ in terms of Categories}
+            As mentioned in the previous Chapter \ref{Chapter3}, the edge labelling is done by irreducible representations of the group, which forms a Unitary Tensor Category. 
+The excitations are given by the monoidal center of the Unitary Tensor Category which is a Modular Tensor Category. This section aims to present some examples to realize the
+above statements in case of Toric Code, $D(Z_{2})$ and $D(S_{3})$. 
+
+\underline{$D(Z_{2})$, Toric Code}:\\
+         The input to the Toric Code is the group $Z_{2}$, that is the edges are indexed by ${-1, 1}$. $Z_{2}$ has two one dimensional irreducible representations. These form
+the data for the Unitary Tensor Category. The excitations are given by the center of the unitary tensor category. The objects in the center of the category $C$ are given by a pair 
+$(M, \rho_{X})$ where $\rho_{X} : X \otimes M \rightarrow M \otimes X$, where $M, X$ $\in$ $C$. The irreducible representations of $Z_{2}$, say $V_{1}$ and $V_{-1}$ each branching 
+into $(V_{1},\rho_{1})$, $(V_{1},\rho_{-1})$, $(V_{-1},\rho_{1})$, $(V_{-1},\rho_{-1})$. Therefore the rank of the modular tensor category is four and thus there are four excitations.
+
+\underline{$D(S_{3})$} : \\
+	The input to Quantum Double of $S_{3}$ is the group $S_{3}$. $S_{3}$ has two one dimensional and one two dimensional irreducible representations. These form the data for the Unitary Tensor Catgory. 
+The excitations are given by the center of the representation category of $S_{3}$, which is isomorphic to the irreducible representations of the Drinfeld Double, which is indexed by irreducible 
+representations of the centralizer of the conjugacy classes of the group. In this example, there are eight such objects. Each of the irreducible representation is a simple object in the Modular Tensor 
+Category.
+ 
+\section{Boundary construction for Toric Code, $D(S_{3})$}
+      The boundary labels are given by objects of the left modules over $C$, $C_{M}$, where $C$ is a Unitary Tensor Category used to index the bulk. Consider the case of Kitaev Quantum 
+Double $D(S_{3})$, the boundary labels were given by the subgroup $K \subset S_{3}$, from the definition of left module over a Unitary Tensor Category, it is easy to that the subgroups form the left modules. 
+Thereby, the boundaries are indexed by various elements of the subgroups. 
+
+      Consider the following construction, the excitations given by MTC $C$, the boundary excitations by $E$, the condensed phase by $D$. The boundary excitations are given by right $A$-modules in $C$, 
+where $C$ is the Modular Tensor Category whose objects are the excitations of the lattice model. The vacuum in $D$ is a condensable algebra $A$ in $C$. For the toric code, suppose the excitations are labelled by 
+$1, e, m, f$. $1 \oplus e$ and $1 \oplus m$ both are objects in $C$ and are algebras in $C$. This is easy to see from the graphical calculus viewpoint and also verifying the commutation relationships.
+These in addition of being algebras, also satisfy the connected, commutative, separable properties making them condensable algebras. Hence these form the vacuum in the condensed phase. The detection of these
+algebras sets the construction of not only $E$ and $D$, but also the excitations which condense on the boundary. Referring to the functor, the excitation to the wall map, in the case of Toric Code for the condensable
+algebra $1 \oplus e$, the excitations $1, e$ are identified with $1 \oplus e$ and $f, m$ are identified with $ m \oplus e$.  $D$ itself is given by $1+e$, and $E$ is given by $m \oplus e$ and  $1 \oplus e$. 
+The above construction provides an insight into the  excitations on the boundary, as well the excitations which condense on the boundary, but not the boundary labels. The above techniques can be extended to obtain the 
+bulk excitations, the boundary excitations and the condensed phase for $D(S_{3})$ using the data from \citep{Reference7}.
+
+\section{Ground state construction for lattice with Ising on boundary}
+    Consider the following lattice model, the edges coming from the UTC of Ising whose objects are $1, \psi, \sigma$. The boundary labels also come from the UTC of Ising, as it forms a left-module of the bulk,
+which is Ising. The ground state is both the eigen-states of the operators $Q_{v}$ and $B_{p}$, where $Q_{v}$ are fusion rules and $B_{p}$ is given by $\varSigma (d_{k}/D^{2}) B_{p}^{k}$. Consider a single lattice on the
+cylinder. 
+\begin{center}
+--$v_{1}$------$v_{1}$--\\
+	   $|$\\
+	   $|$\\
+	 $v_{2}$\\
+	   $|$\\
+	   $|$	\\
+--$v_{3}$------$v_{3}$--\\
+\end{center}
+$ (v1, v2, v3) = \{\{1,1,1\} - (1),\{\psi,1,\psi\} - (2),\{\psi,1,1\} - (3),\{\sigma,1,\psi\} - (4), \{\sigma,1,\sigma\} - (5), 
+                   \{\sigma,1,1\} - (6),\{\sigma,\psi,\sigma\} - (7), \{\psi,1,\sigma\} - (8),\{1,1,\sigma\} - (9),\{1,1,\psi\}\ - (10)\}$ \\
+
+The action of $B_{p}^{1}$ on the above set results in the same set. \\
+The action of $B_{p}^{\psi}$ on the above set results in the following $\{2,1,10,6,5,4,7,9,8,3\}$.\\
+The action of $B_{p}^{\sigma}$ on the above set results in the following 1/sqrt(2) times $\{5+7,5+7,5-7,8+9,1+2+3+10,8+9,1+2-3-10,4+6,4+6,3-7\}$.\\
+
+The matrices $B_{p}^{1}, B_{p}^{\psi}, B_{p}^{\sigma}$ are to used compute $B_{p}$ which is given by $\frac{1}{D}\sum_{s}d_{s}B_{p}^{s}$, which is further 
+used to compute the ground states:  \\
+\begin{lstlisting}[frame=single]
+julia> B_p_1 = eye(10);                                                                                                                                                                                                       
+                                                                                                                                                                                                                              
+julia> B_p_psi = [[0 1 0 0 0 0 0 0 0 0]; [1 0 0 0 0 0 0 0 0 0]; [0 0 0 0 0 0 0 0 0 1]; 
+		  [0 0 0 0 0 1 0 0 0 0]; [0 0 0 0 1 0 0 0 0 0]; [0 0 0 1 0 0 0 0 0 0]; 
+		  [0 0 0 0 0 0 1 0 0 0]; [0 0 0 0 0 0 0 0 1 0]; [0 0 0 0 0 0 0 1 0 0]; 
+		  [0 0 1 0 0 0 0 0 0 0]];                                                                                                                                                                                                     
+                                                                                                                                                                                                                              
+julia> B_p_s = [[0 0 0 0 1 0 1 0 0 0]; [0 0 0 0 1 0 1 0 0 0]; [0 0 0 0 1 0 -1 0 0 0]; 
+		[0 0 0 0 0 0 0 1 1 0]; [1 1 1 0 0 0 0 0 0 1]; [0 0 0 0 0 0 0 1 1 0]; 
+		[1 1 -1 0 0 0 0 0 0 -1]; [0 0 0 1 0 1 0 0 0 0]; [0 0 0 1 0 1 0 0 0 0]; 
+		[0 0 0 0 1 0 -1 0 0 0]]                                                                                                                                                                                                   
+
+julia> B_p_sigma = 1/sqrt(2)*B_p_s;                                                                                                                                                                                          
+                                                                                                                                                                                                                              
+julia> B = (1/4)*(B_p_1 + B_p_psi + sqrt(2)*B_p_sigma);                                                                                                                                                                       
+                                                                                                                                                                                                                              
+julia> eigvals(inv(eigvecs(B))*B*eigvecs(B))                                                                                                                                                                                  
+10-element Array{Complex{Float64},1}:                                                                                                                                                                                         
+         -7.91813e-18+0.0im                                                                                                                                                                                                   
+                  1.0+0.0im                                                                                                                                                                                                   
+8.82083e-18+8.37086e-18im                                                                                                                                                                                                    
+8.82083e-18-8.37086e-18im                                                                                                                                                                                                    
+                 1.0+0.0im                                                                                                                                                                                                   
+                 1.0+0.0im                                                                                                                                                                                                   
+        -7.14582e-18+0.0im
+1.27443e-18+1.57887e-18im 
+1.27443e-18-1.57887e-18im 
+         1.42363e-18+0.0im
+ 
+julia> eigvecs(inv(eigvecs(B))*B*eigvecs(B))                                                                                                                                                                                  
+10x10 Array{Complex{Float64},2}:
+
+% \end{lstlisting}
+ 
+Thus, the number of ground states of the lattice with Ising both on bulk and boundary is three, which is in agreement with 8. 

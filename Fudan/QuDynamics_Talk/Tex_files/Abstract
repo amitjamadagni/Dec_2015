@@ -1,0 +1,17 @@
+\documentclass{article}
+%\author{author}
+\date{\today}
+\title{QuDynamics : Julia package for solving Dynamical Equations in Quantum Mechanics}
+\begin{document}
+\maketitle
+\begin{abstract}
+    Julia is a high-level, high-performance dynamic programming language for technical computing. QuDynamics is a package based on Julia which provides a framework for solvers to solve Dynamical Equations in Quantum Mechanics. 
+The current release of the master includes the support for solving Schrondinger Equation, Liouville von Neumann Equation, Lindblad Master Equation using various solvers which have been integrated from various other Julia 
+packages like ODE.jl, ExpmV.jl, Expokit.jl. The package also provides support for Quantum Monte-Carlo Wave Function method. The aim of the talk is to introduce Julia as well as QuDynamics and present some of examples. The talk 
+would be using JuliaBox or SageMathCloud instances as it would prevent investing time on installation of Julia. It would also focus on equipping QuDynamics with additional features such as parallelization 
+(parallelization at various stages of the design which includes parallelizing Monte-Carlo implementation) and addition of new solvers.
+
+    QuDynamics is a part of JuliaQuantum which provides several other tools in Quantum Mechanics using Julia. The repo is being maintained at https://github.com/JuliaQuantum/QuDynamics.jl.
+
+\end{abstract}
+\end{document}

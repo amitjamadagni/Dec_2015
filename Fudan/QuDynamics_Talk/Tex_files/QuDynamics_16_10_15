@@ -1,0 +1,133 @@
+\documentclass{beamer}
+\usepackage[utf8]{inputenc}
+\usepackage{default}
+\usepackage{graphicx}
+% \usepackage{CJK}
+\usetheme{Dresden}
+\title{QuDynamics : Julia package for solving Dynamical Equations in Quantum Mechanics}
+\author{Amit}
+\institute
+{
+  % Dept. of Mathematics,\\
+  BITS-Pilani.
+  \and
+  %\inst{2}%
+  % Dept. of Physics,\\
+  Fudan University.
+}
+\date{16-10-2015}
+\begin{document}
+\begin{frame}
+\titlepage
+\end{frame}
+\section*{Outline}
+\begin{frame}
+\tableofcontents
+%\end{frame}
+\section{Introduction}
+\subsection{What is Julia and Why ?!}
+% \subsection{SageMathCloud or JuliaBox}
+\subsection{Hello World! Julia}
+% \subsection{What is Git ?!}
+\section{Introduction to Julia}
+\subsection{Functions, Methods, Types}
+% \subsection{}
+\subsection{Packaging in Julia}
+\section{JuliaQuantum : QuBase, QuDynamics}
+\subsection{QuBase and QuDynamics}
+% \subsection{}
+\subsection{Defining a Quantum System}
+\subsection{Examples in QuDynamics}
+\section{QuDynamics and FOSS}
+\subsection{What is Git ?!}
+\subsection{Contributing to FOSS and QuDynamics}
+\end{frame}
+%\section{}
+\begin{frame}
+\frametitle{What is Julia and Why ?!}
+\begin{itemize}
+\pause \item Julia is a high-level, high-performance programming language for technical computing.
+\pause \item Julia is written in Julia (Base). 
+\pause \item Performace as fast as compared to C (Every language has a tradeoff but Julia aims to be optimal for scientific computing).
+\pause \item Parallelization techniques and distributed computing come along with the base distribution.
+\pause \item Julia is FOSS with better design compared to MATLAB (no flame war !). 
+\end{itemize}
+\end{frame}
+\begin{frame}
+\frametitle{Hello World! Julia}
+\begin{itemize} 
+\pause \item Use either SageMathCloud (or) JuliaBox.
+\pause \item REPL - Read - Evaluate - Print - Loop
+\pause \item Hello World ! $->$ println("Hello World !")
+%\begin{itemize} $你好世界$ -> println("你好世界")
+\end{itemize}
+\end{frame}
+\begin{frame}
+\frametitle{Functions, Methods, Types}
+\begin{itemize}
+\pause \item Functions
+\pause \item Structure which takes a tuple and returns a value
+\pause \item Methods (OOP reference $->$ functional programming)
+\pause \item One possible behavior for a function is called a method (Multiple Dispatch)
+\pause \item Types
+\pause \item Examples !
+\end{itemize}
+\end{frame}
+\begin{frame}
+\frametitle{Packaging in Julia !}
+\begin{itemize}
+\pause \item REPL $Pkg$ usage
+\pause \item Using $Pkg.add()$, $Pkg.clone()$, $Pkg.rm()$, $Pkg.installed()$, $Pkg.status()$
+\end{itemize}
+\end{frame}
+\begin{frame}
+\frametitle{QuBase \& QuDynamics}
+\begin{itemize}
+\pause \item QuBase aims to provide all the basic machinery used in QM.
+\pause \item QuDynamics uses the internal constructs as well as the external constructs.
+\end{itemize}
+\end{frame}
+\begin{frame}
+\frametitle{Examples in QuDynamics}
+\begin{itemize}
+\pause \item QuStateEvolution (alias QuPropagator) construct 
+\pause \item Hamiltonian, initial state, time steps, Methods
+\pause \item Methods : QuEuler, QuCrankNicolson, QuKrylov, QuODE45, QuODE78, QuODE23s, QuExpmV, QuExpokit, QuMCWF
+\pause \item System input include $->$ Schrodinger Eq, Liouville von Neumann Eq, Lindblad Master Eq.
+\pause \item Configurations allowed ! $->$ Operator matrix with state vector, Operator matrix with density matrix.
+\pause \item Other ways of specifying ! $->$ QuSchrodingerEq(pass the operator) Internally passing a operator matrix creates an equation.
+\pause \item Quantum Monte Carlo Wave Function Method (Test case example)
+\end{itemize}
+\end{frame}
+\begin{frame}
+\frametitle{What is Git ?!}
+\begin{itemize}
+\pause \item Git is a version control system.
+\pause \item Clones, forks, branches ?!
+\pause \item Push, pull, remotes !
+\end{itemize}
+\end{frame}
+\begin{frame}
+\frametitle{Contributing to FOSS and QuDynamics}
+\begin{itemize}
+\pause \item QuDynamics is FOSS. (MIT license)
+\pause \item Fork the repo, Clone locally, New branch
+\pause \item Test locally, include the tests.
+\pause \item Send in a PR (Pull Request) against the master !
+\pause \item Optimizations in QuDynamics ?! WIP features include parallelization and caching !
+\pause \item Example
+\end{itemize}
+\end{frame}
+\begin{frame}
+\frametitle{Thank you}
+\begin{figure}[h!]
+\centering
+\includegraphics[width=45mm]{GSoC_2105.jpg}
+\end{figure} 
+\begin{itemize}
+\item Done as a part of Google Summer of Code 2015
+\item Mentored by Dr. Alexander Croy, Max Planck Institute for the Physics of Complex Systems, Germany.
+\item Repo : https://github.com/JuliaQuantum/QuDynamics.jl
+\end{itemize}
+\end{frame}
+\end{document}

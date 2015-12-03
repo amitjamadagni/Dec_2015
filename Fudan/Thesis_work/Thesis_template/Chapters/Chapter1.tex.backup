@@ -1,0 +1,384 @@
+% Chapter 1
+
+\chapter{Mathematical Preliminaries} % Main chapter title
+
+\label{Chapter1} % For referencing the chapter elsewhere, use \ref{Chapter1} 
+
+\lhead{Chapter 1. \emph{Mathematical Preliminaries}} % This is for the header on each page - perhaps a shortened title
+
+%----------------------------------------------------------------------------------------
+
+\section{Category Theory : Definitions and Structures}
+ The aim of the section is to provide an overview of the various definitions and formalisms which will be used later in the presentation.
+To begin with Linearity, Semisimplicity, Finiteness are defined and then move onto Monoidal Categories,the later sections  
+assume Monoidal Categories as a base to introduce other structures like Braiding, Rigidity and Twist, leading to 
+the definition of Modularity, leading to Modular Tensor Categories. 
+
+%----------------------------------------------------------------------------------------
+
+\subsection{Linearity, Semisimplicity, Finiteness}
+
+\begin{defn}
+Linearity :\\
+          A category C is said to be linear, if the Homset(A,B) i.e., the set of morphisms from A to B, $\forall$ A,B $\in$ C forms a vector space over a field of charecteristic zero.
+\end{defn}
+
+\begin{defn}
+Simple  :\\ 
+	An object $x$ $\in$ a category C is said to be simple if $Hom(x,x)$ $\cong$ $C$ (the set of complex numbers). That is the endomorphisms of $x$ is equivalent to $C$. \\
+	For example refer: $\href{http://link.springer.com/chapter/10.1007/978-94-007-2636-9_7/fulltext.html}{Reference}$.
+\end{defn}
+
+\begin{defn}
+Semisimplicity :\\
+          A category C is said to be semisimple, if  every object in C can be written as a direct sum of simple objects in C.
+\end{defn}
+
+\begin{defn}
+Finite :\\
+      A category C is said to be finite, if the number of simple objects in C is finite.
+\end{defn}
+
+\subsection{Modular Tensor Categories}
+\begin{defn}
+Monoidal Category: \\
+A category $M$ is said to be monoidal if it is equipped with the following structure :\\
+\begin{enumerate}
+\item A functor called the tensor product $\otimes$ : $\xymatrix@1{ M\times M}$ $\longrightarrow$ $M$ where $\otimes$ $(x,y)$ = $x$ $\otimes$ $y$ 
+   and \\ $\otimes$ $(f,g)$ = $f$ $\otimes$ $g$ $\forall$ objects $x$,$y$ $\in$ $M$ and $\forall$ morphisms $f$,$g$ in $M$ \\
+   
+\item Natural Isomorphisms called the assosciator:\\
+                     \begin{center}
+                       $\alpha_{x,y,z} : (x \otimes y) \otimes z \longrightarrow x \otimes (y \otimes z)$
+                     \end{center}
+         The left unitor:
+                     \begin{center}
+		      $\beta_{x} : 1 \otimes x \longrightarrow x$
+		    \end{center}
+         The right unitor:
+		    \begin{center}
+		     $\gamma_{x} : x \otimes 1 \longrightarrow x$
+		    \end{center}
+         such that the following diagrams commute. 
+                    \begin{center} 
+                    $\xymatrix { 
+		     &((x \otimes y) \otimes z) \otimes w \ar[dr]^{\alpha_{x \otimes y, w, z}}  \ar[dl]^{\alpha_{x,y,z \otimes 1_{w}}}\\ 
+		     (x \otimes (y \otimes z)) \otimes w \ar[d]^{\alpha_{x,y \otimes z, w}}        &          & (x \otimes y) \otimes (z \otimes w) \ar[d]^{\alpha_{x,y,z \otimes w}} \\
+		     x \otimes (( y \otimes z) \otimes w) \ar@{-}[r]  &\ar[r]^<(0.05){1_{x} \otimes \alpha_{y,z,w}}   & x \otimes (y \otimes ( z \otimes w))
+                    }$  
+                       \end{center}
+          and 
+		    \begin{center}
+		    $\xymatrix {
+		    (x \otimes 1) \otimes y \ar[dr]^{\gamma_{x} \otimes 1_{y}} \ar@{-}[r] & \ar[r]^<(0.05){\alpha_{x,1,y}}   & x \otimes (1 \otimes y) \ar[dl]^{1_{x} \otimes \beta_{y}}\\
+		                                         & x \otimes y     
+		    }$
+		    \end{center}
+
+\end{enumerate}
+\end{defn}
+
+\begin{defn}
+Rigidity :\\
+      A monoidal category $M$ is said to be rigid, if for each object $A$ $\in$ $M$, $\exists$ an object $A^{*}$ $\in$ $M$ together with the maps : 
+      \begin{center}
+      $i_{A}$ : $1$ $\rightarrow$ $A$ $\otimes$ $A^{*}$,  \\
+      $e_{A}$ : $A^{*}$ $\otimes$ $A$ $\rightarrow$ $1$
+      \end{center}
+\end{defn}
+
+\begin{defn}
+    Fusion Category :\\
+	    Fusion category is a finite semisimple C-linear rigid monoidal category such that monoidal unit is simple.
+\end{defn}
+
+\begin{defn}
+Braided Fusion Category :\\
+      A braided fusion category $M$ is a fusion category along with the 
+following isomorphisms 
+\begin{center}
+	  $\xymatrix{
+	    \sigma_{x,y} : x \otimes y \longrightarrow^{~} y \otimes x
+	   }$
+	  \end{center} where $x$, $y$ $\in$ $M$
+such that the following diagrams commute.
+	\begin{center}
+	$\xymatrix{
+	x \otimes 1 \ar[r]^{\beta_{x}}  \ar[d]^{\sigma_{1,x}} & x \\
+	1 \otimes x \ar[ur]_{\gamma_{x}} &
+	}$
+      \end{center}
+and 
+      \begin{center}
+      $\xymatrix{
+        &x\otimes (y \otimes z) \ar[r]^{\sigma_{x,y \otimes z}} &(y \otimes z) \otimes x \ar[dr]^{\alpha_{y,z,x}} & \\
+        (x \otimes y) \otimes z \ar[ur]^{\alpha_{x,y,z}} \ar[dr]^{\sigma_{x,y \otimes 1_{z}}}    & & &y \otimes (z \otimes x) \\
+	&(y \otimes x) \otimes z \ar[r]^{\alpha_{x,y,z}} & y \otimes (x \otimes z) \ar[ur]^{1_{y} \otimes \sigma_{x,z}} & 
+      }$
+      \end{center}
+\end{defn}
+
+% \par
+% Putting together all the structures until now, we can construct a \emph{Finite Semisimple $C$-Linear Rigid Braided Monoidal Category}. We now define
+% a \textit{pivotal structure} on a rigid braided monoidal category, which would be further used in the definition of Ribbon Categories (which are Rigid Braided Monoidal Categoires with a twist).
+% \par
+
+\begin{defn}
+Pivotial Structure on a fusion category is an isomorphism, \\
+\begin{center}
+  $\delta_{A}$ : $A$ $\rightarrow$ $A^{**}$ ,such that \\
+  $\delta_{A \otimes B}$ = $\delta_{A}$ $\otimes$ $\delta_{B}$ \\
+  $\delta_{1}$ = $1$
+\end{center}
+\end{defn}
+
+\begin{defn}
+Ribbon Fusion Category is a Braided Fusion Category with a pivotal structure which is compatible with braiding. 
+\begin{center}
+  $\theta_{A}$ = $\gamma_{A}$ $\circ$ $\delta_{A}$ : $A$ $\rightarrow$ $A$ via $A^{**}$
+\end{center}
+\end{defn}
+
+\par
+Note : Braided Fusion Category with a pivotal structure is not always a Ribbon Fusion Category, as the pivtoal structure must be compatible with braiding.  
+\par
+
+% \begin{defn}
+% Ribbon Category :\\
+% Ribbon Category is a Rigid Braided Monodial Category with a compatible twist, defined by the isomorphism
+% \begin{center}
+%  $\theta_{A}$ = $\gamma_{A}$ $\circ$ $\delta_{A}$ : $A$ $\rightarrow$ $A$ via $A^{**}$
+% \end{center}
+% \end{defn}
+\begin{defn}
+Spherical Fusion Category : \\
+Let $f$ $\in$ $End(X)$ where $X$ is a simple object in $C$ i.e., $f$ : $X$ $\longrightarrow$ $X$ then right trace of the map $f$ is given by
+\begin{center}
+$Tr^{r}(f)$ = $1$ $\rightarrow$ $x$ $\otimes$ $x^{*}$ $\rightarrow$ $x^{**}$ $\otimes$ $x^{*}$ $\rightarrow$ $x$ $\otimes$ $x^{*}$ $\rightarrow$ $1$
+\end{center}
+On similar lines,
+\begin{center}
+$Tr^{l}(f)$ = $1$ $\rightarrow$ $x^{*}$ $\otimes$ $x$ $\rightarrow$ $x^{*}$ $\otimes$ $x^{**}$ $\rightarrow$ $x^{*}$ $\otimes$ $x$ $\rightarrow$ $1$
+\end{center}
+Fusion Category is said to be spherical if $Tr^{l}(f)$ = $Tr^{r}(f)$ $\forall$ $f$ $\in$ C
+\end{defn}
+
+\begin{defn}
+Quantum Dimension of an object $X$ in category C is given by $d_{X}$ := $Tr(1_{X})$,
+we define $D$ = $\varSigma$ $d_{i}^{2}$
+\end{defn}
+
+\begin{defn}
+We define the modular matrix S, whose elements are given by
+\begin{center}
+$s_{ij}$ = $Tr(1_{i \otimes j})$ = $d_{i \otimes j}$, $\forall$ $i$, $j$ $\in$ C
+\end{center}
+\end{defn}
+Finally we define Modular Tensor Category (MTC), 
+\begin{defn}
+Modular Tensor Category :\\
+  MTC is a RFC such that the $det(S)$ $\neq$ $0$.
+  
+  % MTC is a Finite Semisimple Linear Ribbon category along with the modularity condition, that is the S-matrix is invertible (invariant of the hopf link)
+% WIP.
+\end{defn}
+
+\subsection{Left, Right Modules over a Category}
+We define a left module over a tensor category, this is later used to define the boundaries for the Levin-Wen Models in \ref{Chapter3}
+
+
+% \subsection{Graphical Calculus}
+ % Graphical Calculus is another way of viewing the objects and morphism space of a Category in terms of graphs. The objects are denoted by strings and the morphisms as nodes.
+% For example : A $\otimes$ B $\rightarrow$ C $\otimes$ D. 
+
+% Given objects A,B,C,D,E the basis space construction looks as follows and the conversion between the basis space, given by
+
+% is given by F-Matrix (we refer to this as F-move).
+
+% The unit object and unit morphisms are represented by emptiness.
+
+% Give an example citing the above and also a general representation.
+
+% This would be further used in Chapter 4.
+
+
+\section{Drinfeld Double of a Group}
+    To introduce the Drinfeld Double of a Group, denoted by $D(G)$, we first define Algebras, Co-algebras, Bialgebras and Hopf Algebras.
+    
+\subsection{Algebras, Co-algebras, Hopf Algebras}
+\begin{defn}
+Algebra : \\
+        Let $A$ be a vector space over a field $K$. The triple $(A, m, \eta)$ is an associative algebra, where
+
+    $m : A \otimes A \rightarrow A$ (multiplication map), \\
+    $\eta : K \rightarrow A$ (unit map),\\
+such that $m, \eta$ satisfy the following commutation diagrams \\
+\begin{center}
+$\xymatrix{
+A \otimes A \otimes A \ar[r]^{m \circ id_{A}} \ar[d]^{id_{A} \circ m} & A \otimes A \ar[d]^{m} \\
+A \otimes A \ar[r]^{m}  & A 
+}$
+\end{center}
+and \\
+\begin{center}
+$\xymatrix{
+A \ar[r]^{id_{A} \circ \eta} \ar[d]^{\eta \circ A} & A \otimes A \ar[d]^{m} \\
+A \otimes A \ar[r]^{m}  & A 
+}$
+\end{center} 
+\end{defn}
+
+\begin{defn}
+Co-Algebra : \\
+        Let $C$ be a vector space over a field $K$. The triple $(C, n, \delta)$ is a co-algebra, where
+
+    $n : C \rightarrow C \otimes C$ (comultiplication map)\\
+    $\delta : C \rightarrow K$ (counit map),\\
+such that $m, \delta$ satisfy the following commutation diagrams \\
+\begin{center}
+$\xymatrix{
+C \ar[r]^{n} \ar[d]^{n} & C \otimes C \ar[d]^{id_{C} \circ n} \\
+C \otimes C \ar[r]^{n \circ id_{C}}  & C \otimes C \otimes C
+}$
+\end{center}
+and \\
+\begin{center}
+$\xymatrix{
+C \ar[r]^{\delta} \ar[d]^{\delta} & C \otimes C \ar[d]^{id_{C} \otimes \delta} \\
+C \otimes C \ar[r]^{\delta \otimes id_{C}}  & C 
+}$
+\end{center} 
+\end{defn}
+
+\begin{defn}
+Bialgebra : \\
+    Let $B$ be a vector space over a field $K$. A quintuple $(B, m, n, \eta, \delta)$ is a bialgebra, where
+$(B,m,\eta)$ is an algebra and $(B,n,\delta)$ is a co-algebra.
+\end{defn}
+
+
+\begin{defn}
+Hopf Algebra: \\
+      Let $H$ be a vector space over a field $K$. The quintuple $(H, m, n, \eta, \delta)$ along with the antipode map $S$
+\begin{center}
+    $S : H \rightarrow H$ 
+\end{center}
+such that the following diagram commutes 
+\begin{center}
+ $\xymatrix{
+ H \otimes H \ar[rr]^{id_{H} \otimes S} & & H \otimes H \ar[d]^{m} \\
+ H \ar[r]^{\delta} \ar[u]^{n} \ar[d]^{n} & K \ar[r]^{\eta} & H \\
+ H \otimes H \ar[rr]^{S \otimes id_{H}} &  & H \otimes H \ar[u]^{m}
+ }$
+\end{center}
+forms a Hopf Algebra.
+\end{defn}
+
+\subsection{Drinfeld Double (Quantum Double) of a finite group}
+    Let $G$ be a finite group and $K$ be a field. The group algebra $K[G]$ is the set of all linear combinations of elements from $G$ with 
+the scalars coming from the field $K$. This forms a vector space and by defining the comultiplication $n(g)$ := $g \otimes g$ and 
+counit by $\delta(g)$ = 1, and the antipode $S(g) = g^{-1}$ turns the group algebra $K[G]$ into a Hopf Algebra by the above definitions.
+
+    Let $K(G)$ be the set of functions on $G$ with values in $K$. The basis space is given by $\delta_{g}$ defined by the projection 
+$\delta_{g}$(h) = $\delta_{g,h}$. This forms a vector space and is an algebra with point-wise multiplication, with the unit given by
+$\eta : K \rightarrow K(G)$ is defined by $\eta(\lambda)(g) = \lambda$, with comultiplication, counit and antipode given by :
+\begin{center}
+    $(n f)(g,h) = f(gh), \delta(f) = f(e), (Sf)(g) = f(g^{-1})$
+\end{center}
+Thus, $K(G)$ is a Hopf Algebra using the above definitions.
+
+\begin{defn}
+Quantum Double of a group $G$, $D(G)$ : \\
+    The vector space $K(G) \otimes K[G]$ along with the following structure :\\
+\begin{center}
+    $(\delta_{g} \otimes x)(\delta_{h} \otimes y) = \delta_{gx,xh}(\delta_{g} \otimes xy)$,\\
+    $ 1 = \sum_{g \in G} \delta_{g} \otimes e$, \\
+    $ n (\delta_{g} \otimes x) = \sum_{g_{1}g_{2} = g}(\delta_{g_{1}} \otimes x) \otimes (\delta_{g_{2}} \otimes x)$, \\
+    $ \Delta(\delta_{g} \otimes x) = \delta_{g,e}$,\\
+    $ S(\delta_{g} \otimes x) = \delta_{x^{-1}g^{-1}x} \otimes x^{-1}$.
+\end{center}
+\end{defn}
+forms a Hopf Algebra, which is defined as Quantum Doulbe of a group $G$, $D(G)$.    
+
+\subsection{Representations of Drinfeld Double of a Group}
+    Consider an element $a \in G$ and let $\pi$ be a representation of $Z(a)$ over the vector space $W$ 
+with basis $\{w_{1}, ...., w_{d}\}$. Define the vector space $V_{\bar{a}, \pi}$ with the basis 
+$\{ |b, w_{i}\textrangle : b \in \bar{a}, 1 \leq i \leq d\}$. $V_{\bar{a}, \pi}$ is a representation of $D(G)$ as follows.
+For any $b \in a$ fix $k_{b} \in G$ such that $b = k_{b}ak_{b}^{-1}$. Observe that $k_{gbg^{-1}}^{-1}gk_{b}$ is always
+in $Z(a)$, for any $w \in W$, $b \in \bar{a}$, and $gh^{*} \in  D(G)$ define
+\begin{center}
+ $gh^{*}|b,w\textrangle = \delta_{h,b} |gbg^{-1}, \pi(k_{gbg^{-1}}^{-1}gk_{b})w\textrangle$
+\end{center}
+The above action gives a representation of $D(G)$, the character of this representation is given by,\\
+\begin{center}
+  $\chi_{(\bar{a}, \pi)}(gh^{*}) = \delta_{h \in \bar{a}}\delta_{gh,hg} tr_{\pi}(k_{h}^{-1}gk_{h})$
+\end{center}
+
+All the irreducible representations of the $D(G)$ are indexed by the irreducible representations of the centralizer of the conjugacy classes. 
+For more detailed treatment refer to \citep{Reference1, Reference14}
+
+\section{Algebras, Left (Right), BiModules over Algebras in a Category}
+    
+    The section aims to present the definitions of Algebras in a Category, Left(Right), BiModules over Algebras in
+a category. These would be used later to outline the boundary excitations as presented by Kong \cite{Reference5} :
+
+\begin{defn}
+Algebra : \\
+    Let $A$ be an object in a category $C$. An algebra is a triple $(A, m, \eta)$ where 
+
+    $m : A \otimes A \rightarrow A$,  
+    $\eta : K \rightarrow A$, where $K$ is a simple object.\\
+such that $m, \eta$ satisfy the following commutation diagrams \\
+\begin{center}
+$\xymatrix{
+A \otimes A \otimes A \ar[r]^{m \circ id_{A}} \ar[d]^{id_{A} \circ m} & A \otimes A \ar[d]^{m} \\
+A \otimes A \ar[r]^{m}  & A 
+}$
+$\xymatrix{
+A \ar[r]^{id_{A} \circ \eta} \ar[d]^{\eta \circ A} & A \otimes A \ar[d]^{m} \\
+A \otimes A \ar[r]^{m}  & A 
+}$
+\end{center}
+\end{defn}
+
+Given algebra $A$ in category $C$, the right A-module is given by the following : \\
+\begin{defn}
+Right A-module :\\
+    The right module of an algebra $A$ has objects as pairs $(M, \rho_{M})$ where $M \in C$, and $\rho_{M}$ is given by
+$\rho_{M} : M \otimes A \rightarrow M$, such that the following commutation diagram is satisfied:\\
+\begin{center}
+$\xymatrix{
+M \otimes A \otimes A \ar[r]^{\rho_{M} \circ id_{A}} \ar[d]^{id_{M} \circ m} & M \otimes A \ar[d]^{\rho_{M}} \\
+M \otimes A \ar[r]^{\rho_{M}}  & A 
+}$
+\end{center}
+\end{defn}
+
+Similarly we define the left module, a A-bimodule $M$ is a triple equipped with both $\rho^{l}_{M}$ and $\rho^{r}_{M}$. \\
+
+We now define some properties of algebras :\\
+\begin{defn}
+ Commutative Algebra:\\
+         Algebra $(A, m, \eta)$ in $C$ is said to be commutative if there exists a natural transformation $C_{M,A}$ given by
+         \begin{center}
+             $C_{M,A} :  M \otimes A \rightarrow A \otimes M$, where $M \in C$
+         \end{center}
+\end{defn}
+
+\begin{defn}
+ Separable Algebra :\\
+ Algebra $(A, m, \eta)$ in $C$ is called separable if there exists a bimodule map $e : A \rightarrow A \otimes A$ such that  
+$ m \circ e = id_{A}$. A separable algebra is called connected if $dim(hom(1,A)) = 1)$
+\end{defn}
+
+\begin{defn}
+ Local Module over a commutative Algebra:\\
+      Let $A$ be a commutative Algebra in $C$. Let $(M, \mu_{M})$ be a right A-module. $(M, \mu_{M})$ is called local if the following
+      commutation diagram holds :
+      \begin{center}
+	    $\xymatrix{
+	    A \otimes M \ar[r]^{\mu_{M}} \ar[d]^{C_{A,M}} & M \\
+	    M \otimes A \ar[r]^{C_{M,A}} & A \otimes M \ar[u]^{\mu_{M}} 
+	    }$
+      \end{center}
+\end{defn}
